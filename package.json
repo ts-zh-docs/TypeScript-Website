@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "engines": {
-    "node": ">=13, <= 16"
+    "node": "16.x"
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
@@ -44,7 +44,8 @@
     "clean": "yarn workspace typescriptlang-org gatsby clean",
     "clean-twoslash": "rm -rf packages/.cache/twoslash",
     "test": "CI=true yarn workspaces foreach -v -t --exclude root run test",
-    "update-test-snapshots": "CI=true yarn workspaces foreach --include gatsby-remark-shiki-twoslash  --include @typescript/twoslash --include shiki-twoslash --include @typescript/vfs run test -u"
+    "update-test-snapshots": "CI=true yarn workspaces foreach --include gatsby-remark-shiki-twoslash  --include @typescript/twoslash --include shiki-twoslash --include @typescript/vfs run test -u",
+    "build-and-deploy": "yarn docs-sync pull ts-zh-docs/TypeScript-zh-Website#main 1 && yarn bootstrap && yarn workspace typescriptlang-org setup-playground-cache-bust && yarn build && yarn build-site && cp -r packages/typescriptlang-org/public site"
   },
   "dependencies": {
     "@oss-docs/sync": "^1.1.4",
@@ -54,8 +55,8 @@
     "serve-handler": "^6.1.2",
     "xmldom": "^0.5.0"
   },
-  "repository": "microsoft/TypeScript-Website",
-  "author": "Deploy Bot <ortam@microsoft.com>",
+  "repository": "ts-zh-docs/TypeScript-Website",
+  "author": "Xavi Lee <xavilee2002@qq.com>",
   "auto": {
     "plugins": [
       "npm"

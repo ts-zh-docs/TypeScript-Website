@@ -58,9 +58,7 @@ export const setupRedirects = (
     "/docs/handbook/module-resolution": "/docs/handbook/modules/theory.html#module-resolution",
     "/docs/handbook/module-resolution.html": "/docs/handbook/modules/theory.html#module-resolution",
   });
-  // These have been replaced by the real output in the handbook
-  // addRedirects({
-  //   "/assets/typescript-handbook.epub": "/docs/handbook/intro.html",
-  //   "/assets/typescript-handbook.pdf": "/docs/handbook/intro.html"
-  // })
+addRedirects({
+  "/": "/zh"
+})
 }

@@ -4,6 +4,11 @@ import { indexCopy } from "../../copy/en/index2"
 import { createInternational } from "../../lib/createInternational"
 import { useIntl } from "react-intl"
 import { EditorExamples } from "./EditorExamples"
+import { createIntlLink } from "../../components/IntlLink"
+
+type Props = {
+  pageContext: any
+}
 
 const Row = (props: { children: any, className?: string }) => <div className={[props.className, "row"].join(" ")}>{props.children}</div>
 const Col = (props: { children: any, className?: string }) => <div className={[props.className, "col1"].join(" ")}>{props.children}</div>
@@ -28,10 +33,10 @@ const FluidButton = (props: { href?: string, onClick?: any, title: string, subti
   </a>
 )
 
-export const AboveTheFold = () => {
+export const AboveTheFold = (props: Props) => {
   const [showCTALinks, setShowCTALinks] = useState(false)
   const i = createInternational<typeof indexCopy>(useIntl())
-
+  const IntlLink = createIntlLink(props.pageContext.lang)
   const Headline = () => {
     const onclick = (e) => {
       setShowCTALinks(true)
@@ -96,17 +101,20 @@ export const AboveTheFold = () => {
 
         <Col className="call-to-action">
           <img src={require("../../assets/index/code-light.png").default} width="100%" role="none"  />
-          <FluidButton
-            title={i("index_2_cta_download")}
-            subtitle={i("index_2_cta_download_subtitle")}
-            href="/download"
-            onClick={() => event("Home Page CTA Exited", { link: "download" })}
-            icon={
-              <svg width="15" height="27" viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.5 0.5V19M7.5 19L1 13M7.5 19L13 13" stroke="black" strokeWidth="1.5" />
-                <path d="M0.5 25H14.5" stroke="black" strokeWidth="4" />
-              </svg>
-            } />
+          <IntlLink
+  to='/download'>
+  <FluidButton
+    title={i("index_2_cta_download")}
+    subtitle={i("index_2_cta_download_subtitle")}
+    icon={
+      <svg width="15" height="27" viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7.5 0.5V19M7.5 19L1 13M7.5 19L13 13" stroke="black" strokeWidth="1.5" />
+        <path d="M0.5 25H14.5" stroke="black" strokeWidth="4" />
+      </svg>
+    }
+  />
+</IntlLink>
+
         </Col>
       </Row>
     </div>

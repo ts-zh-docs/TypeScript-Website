@@ -82,7 +82,7 @@ const Index: React.FC<Props> = (props) => {
 
       <div id="index-2">
         <Section color="blue" className="headline">
-          <AboveTheFold {...props} />
+          <AboveTheFold />
         </Section>
         <VersionBar />
 

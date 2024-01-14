@@ -17,5 +17,10 @@ jobs:
             git config user.email "tsdocs@126.com"
             git config user.name "SyncDocsBot"
             git commit --allow-empty -m "trigger build"
-            git push
           fi
+
+  - name: Push changes
+    uses: ad-m/github-push-action@master
+    with:
+      github_token: ${{ secrets.READ_WRITE_PAT }}
+      force_with_lease: true

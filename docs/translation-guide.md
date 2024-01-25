@@ -52,7 +52,6 @@ oneline: "对文章内容的简要介绍"
 If you are new to HTML, CSS, JavaScript, etc., try our [Learn web development](/docs/Learn) tutorials.
 ```
 
-
 还需特别注意路径后带有片段标识（fragment）的站内链接，请同步更新片段标识为本地化文档中指定标题的 ID（若不清楚标题和 ID 之间的转换规则，可以在浏览器的开发者工具中查找对应标题的 ID）。
 
 例如，对于以下链接：

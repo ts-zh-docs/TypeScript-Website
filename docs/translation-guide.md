@@ -161,7 +161,7 @@ Like this.
 
 <!-- markdownlint-disable search-replace -->
 
-我们无需将“you”翻译为“您”，在文档正文部分的翻译中，请统一使用“你”。
+我们无需将“you”翻译为“您”，在文档正文部分的翻译中，请统一使用“你”。且在中文技术文档中，一般语气风格较为客观，在交互性不是很强的情况下，可以考虑删去“你”这样的主语，显得更符合中文表达习惯。
 
 <!-- markdownlint-enable search-replace -->
 
@@ -184,5 +184,3 @@ Like this.
 
 英文文档中使用了一些常见标题，为了保持简体中文文档的一致性，请在翻译时参考术语表中的[标题和表格的翻译](glossary.md#标题表格)。
 
-[如何使用 markdown 来撰写文档]: https://developer.mozilla.org/zh-CN/docs/MDN/Writing_guidelines/Howto/Markdown_in_MDN
-[运行实例]: https://developer.mozilla.org/zh-CN/docs/MDN/Writing_guidelines/Page_structures/Live_samples

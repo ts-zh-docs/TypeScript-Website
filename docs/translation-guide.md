@@ -11,13 +11,16 @@
 每个文档的开头都会有元数据，本地化文档中应该使用的元数据说明如下：
 
 - `title`（必须）：为文档的大标题
-- `layout`（必须）
+- `layout`（必须）：目前统一为 `docs`
 - `permalink`（必须）：为与网页 URL 相关的元数据
-
+- `oneline`（必须）：用一句话简要介绍文章内容
 最终在简体中文文档中呈现的元数据如下所示：
 
 ```yaml
-// todo
+title: 标题
+layout: docs
+permalink: /docs/handbook/2/example.html
+oneline: "对文章内容的简要介绍"
 ```
 
 ## 翻译标题
@@ -48,11 +51,6 @@
 If you are new to HTML, CSS, JavaScript, etc., try our [Learn web development](/docs/Learn) tutorials.
 ```
 
-在翻译时，应该将 URL 路径开头的 `/en-US` 替换为 `/zh-CN`：
-
-```md
-如果你刚刚开始了解 HTML、CSS、JavaScript 等相关知识，你可以试着完成我们的 [Web 开发教程](/docs/Learn)。
-```
 
 还需特别注意路径后带有片段标识（fragment）的站内链接，请同步更新片段标识为本地化文档中指定标题的 ID（若不清楚标题和 ID 之间的转换规则，可以在浏览器的开发者工具中查找对应标题的 ID）。
 

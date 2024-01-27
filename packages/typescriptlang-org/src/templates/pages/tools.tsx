@@ -25,7 +25,7 @@ const Index: React.FC<Props> = (props) => {
             <img src={require("../../../static/images/tools/play.png").default} alt="Preview of the TypeScript Playground screenshot" />
             <p>演练场</p>
           </a>
-          <p>探索、学习和共享 TypeScript 代码的实时环境。 通过尝试不同的编译器标志，以及运行大量代码示例，以了解 TypeScript 工作的具体细节。</p>
+          <p>用于探索、学习和共享 TypeScript 代码的实时环境。你可以通过尝试不同的编译器标志，以及运行大量代码示例，以了解 TypeScript 工作的具体细节。</p>
         </Col>
         <Col>
           <Link className="cropper" to="/tsconfig">

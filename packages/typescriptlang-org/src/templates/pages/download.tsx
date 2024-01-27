@@ -17,27 +17,27 @@ const changeExample2 = (code: string) => document.getElementById("code-run")!.te
 const Index: React.FC<Props> = (props) => {
   const Link = createIntlLink(props.pageContext.lang)
 
-  return <Layout title="How to set up TypeScript" description="Add TypeScript to your project, or install TypeScript globally" lang={props.pageContext.lang}>
+  return <Layout title="如何设置 TypeScript" description="将 TypeScript 添加到你的项目中，或者全局安装 TypeScript" lang={props.pageContext.lang}>
     <div className="raised main-content-block">
-      <h1>Download TypeScript</h1>
-      <p>TypeScript can be installed through three installation routes depending on how you intend to use it: an npm module, a NuGet package or a Visual Studio Extension.</p>
-      <p>If you are using Node.js, you want the npm version. If you are using MSBuild in your project, you want the NuGet package or Visual Studio extension.</p>
+      <h1>下载 TypeScript</h1>
+      <p>根据你打算如何使用 TypeScript，可以通过三种安装方式进行安装：npm 模块、NuGet 包或 Visual Studio 扩展。</p>
+      <p>如果你正在使用 Node.js，你需要选择 npm 版本。如果你的项目使用 MSBuild，则需要选择 NuGet 包或 Visual Studio 扩展。</p>
     </div>
 
     <div className="raised main-content-block">
-      <h2>TypeScript in Your Project</h2>
-      <p>Having TypeScript set up on a per-project basis lets you have many projects with many different versions of TypeScript, this keeps each project working consistently.</p>
+      <h2>在你的项目中使用 TypeScript</h2>
+      <p>在每个项目中依次设置 TypeScript 可以让你的每个项目都可以使用不同版本的 TypeScript，这样可以保持每个项目的一致性。</p>
 
       <section style={{ display: "flex", flexWrap: "wrap" }}>
         <div style={{ borderRight: "1px lightgrey solid", padding: "1rem", flex: 1, minWidth: "240px" }}>
-          <h3>via npm</h3>
-          <p>TypeScript is available as a <a href="https://www.npmjs.com/package/typescript">package on the npm registry</a> available as <code>"typescript"</code>.</p>
-          <p>You will need a copy of <a title="Link to the node.js project" href="https://nodejs.org/en/">Node.js</a> as an environment to run the package. Then you use a dependency manager like <a title="Link to the npm package manager" href='https://www.npmjs.com/'>npm</a>, <a title="Link to the yarn package manager" href='https://yarnpkg.com/'>yarn</a> or <a title="Link to the pnpm package manager" href='https://pnpm.js.org/'>pnpm</a> to download TypeScript into your project.</p>
+          <h3>通过 npm 安装</h3>
+          <p>TypeScript 可以作为<a href="https://www.npmjs.com/package/typescript">npm 注册表上的包</a>，名称为<code>“typescript”</code>。</p>
+          <p>您需要一个<a title="链接到 node.js 项目" href="https://nodejs.org/en/">Node.js</a>作为运行该包的环境。然后，您可以使用像<a title="链接到 npm 包管理器" href='https://www.npmjs.com/'>npm</a>、<a title="链接到 yarn 包管理器" href='https://yarnpkg.com/'>yarn</a>或<a title="链接到 pnpm 包管理器" href='https://pnpm.js.org/'>pnpm</a>这样的依赖管理器将 TypeScript 下载到您的项目中。</p>
           <div>
             <code id='code-example'>npm install typescript --save-dev</code><br /><br />
             <button onClick={() => changeExample("npm install typescript --save-dev")}>npm</button> <button onClick={() => changeExample("yarn add typescript --dev")}>yarn</button> <button onClick={() => changeExample("pnpm add typescript -D")}>pnpm</button>
           </div>
-          <p>All of these dependency managers support lockfiles, ensuring that everyone on your team is using the same version of the language. You can then run the TypeScript compiler using one of the following commands:</p>
+          <p>所有这些依赖管理器都支持锁定文件，确保团队中的每个人都使用相同版本的语言。然后，您可以使用以下命令之一运行TypeScript编译器：</p>
           <div>
             <code id='code-run'>npx tsc</code><br /><br />
             <button onClick={() => changeExample2("npx tsc")}>npm</button> <button onClick={() => changeExample2("yarn tsc")}>yarn</button> <button onClick={() => changeExample2("pnpm tsc")}>pnpm</button>
@@ -45,8 +45,8 @@ const Index: React.FC<Props> = (props) => {
         </div>
 
         <div style={{ padding: "1rem", flex: 1, minWidth: "240px" }}>
-          <h3>with Visual Studio</h3>
-          <p>For most project types, you can get TypeScript as a package in Nuget for your MSBuild projects, for example an ASP.NET Core app.</p>
+          <h3>使用Visual Studio</h3>
+          <p>对于大多数项目类型，您可以在 NuGet 中将 TypeScript 作为软件包获取，例如 ASP.NET Core 应用程序。</p>
           <p>When using Nuget, you can <a href="https://learn.microsoft.com/visualstudio/javascript/tutorial-aspnet-with-typescript">install TypeScript through Visual Studio</a> using:</p>
           <ul>
             <li>

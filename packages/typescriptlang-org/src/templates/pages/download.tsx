@@ -31,13 +31,13 @@ const Index: React.FC<Props> = (props) => {
       <section style={{ display: "flex", flexWrap: "wrap" }}>
         <div style={{ borderRight: "1px lightgrey solid", padding: "1rem", flex: 1, minWidth: "240px" }}>
           <h3>通过 npm 安装</h3>
-          <p>TypeScript 可以作为<a href="https://www.npmjs.com/package/typescript">npm 注册表上的包</a>，名称为<code>“typescript”</code>。</p>
-          <p>你需要一个<a title="链接到 node.js 项目" href="https://nodejs.org/en/">Node.js</a>作为运行该包的环境。然后，你可以使用像<a title="链接到 npm 包管理器" href='https://www.npmjs.com/'>npm</a>、<a title="链接到 yarn 包管理器" href='https://yarnpkg.com/'>yarn</a>或<a title="链接到 pnpm 包管理器" href='https://pnpm.js.org/'>pnpm</a>这样的依赖管理器将 TypeScript 下载到你的项目中。</p>
+          <p>TypeScript 可以作为<a href="https://www.npmjs.com/package/typescript"> npm 注册表上的包</a>，名称为<code>“typescript”</code>。</p>
+          <p>你需要 <a title="链接到 node.js 项目" href="https://nodejs.org/en/">Node.js</a> 作为运行该包的环境。然后，你可以使用像 <a title="链接到 npm 包管理器" href='https://www.npmjs.com/'>npm</a>、<a title="链接到 yarn 包管理器" href='https://yarnpkg.com/'>yarn</a> 或 <a title="链接到 pnpm 包管理器" href='https://pnpm.js.org/'>pnpm</a> 这样的依赖管理器将 TypeScript 下载到你的项目中。</p>
           <div>
             <code id='code-example'>npm install typescript --save-dev</code><br /><br />
             <button onClick={() => changeExample("npm install typescript --save-dev")}>npm</button> <button onClick={() => changeExample("yarn add typescript --dev")}>yarn</button> <button onClick={() => changeExample("pnpm add typescript -D")}>pnpm</button>
           </div>
-          <p>所有这些依赖管理器都支持锁定文件，确保团队中的每个人都使用相同版本的语言。然后，你可以使用以下命令之一运行TypeScript编译器：</p>
+          <p>所有这些依赖管理器都支持锁定文件，确保团队中的每个人都使用相同版本的语言。然后，你可以使用以下命令之一运行 TypeScript 编译器：</p>
           <div>
             <code id='code-run'>npx tsc</code><br /><br />
             <button onClick={() => changeExample2("npx tsc")}>npm</button> <button onClick={() => changeExample2("yarn tsc")}>yarn</button> <button onClick={() => changeExample2("pnpm tsc")}>pnpm</button>
@@ -45,7 +45,7 @@ const Index: React.FC<Props> = (props) => {
         </div>
 
         <div style={{ padding: "1rem", flex: 1, minWidth: "240px" }}>
-          <h3>使用Visual Studio</h3>
+          <h3>使用 Visual Studio</h3>
           <p>对于大多数项目类型，你可以在 NuGet 中将 TypeScript 作为软件包获取，例如 ASP.NET Core 应用程序。</p>
           <p>使用 NuGet 时，你可以 <a href="https://learn.microsoft.com/visualstudio/javascript/tutorial-aspnet-with-typescript">通过 Visual Studio 安装</a>，使用以下命令：</p>
           <ul>

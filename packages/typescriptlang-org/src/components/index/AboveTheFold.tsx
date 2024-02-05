@@ -5,6 +5,8 @@ import { createInternational } from "../../lib/createInternational"
 import { useIntl } from "react-intl"
 import { EditorExamples } from "./EditorExamples"
 
+import { localeLink } from "../../lib/localeLink"
+
 type Props = {
   pageContext: any
 }
@@ -12,14 +14,6 @@ type Props = {
 const Row = (props: { children: any, className?: string }) => <div className={[props.className, "row"].join(" ")}>{props.children}</div>
 const Col = (props: { children: any, className?: string }) => <div className={[props.className, "col1"].join(" ")}>{props.children}</div>
 const Col2 = (props: { children: any }) => <div className="col2">{props.children}</div>
-
-const localeLink = (props: Props, localeString: string)=> {
-  if(props.pageContext.lang === "en") {
-    return localeString
-  } else {
-    return `/${props.pageContext.lang}${localeString}`
-  }
-}
 
 const event = (name: string, options?: any) => {
   // @ts-ignore

@@ -24,6 +24,7 @@ import {Code as Del1} from "../../components/index/twoslash/generated/Index2Del1
 import {Code as Del2} from "../../components/index/twoslash/generated/Index2Del2RM"
 import {Code as Del3} from "../../components/index/twoslash/generated/Index2Del3JS.js"
 
+import { localeLink } from "../../lib/localeLink"
 
 const Section = (props: { children: any, color: string, className?: string }) =>
   <div key={props.color} className={props.color + " " + (props.className ?? "")}><div className="container">{props.children}</div></div>
@@ -40,13 +41,6 @@ type Props = {
 const Index: React.FC<Props> = (props) => {
   const i = createInternational<typeof indexCopy>(useIntl())
   const Link = createIntlLink(props.pageContext.lang)
-  const localeLink = (props: Props, localeString: string)=> {
-    if(props.pageContext.lang === "en") {
-      return localeString
-    } else {
-      return `/${props.pageContext.lang}${localeString}`
-    }
-  }
 
   useEffect(() => {
     // NOOP on tiny devices where we need to re-orient the arrows.

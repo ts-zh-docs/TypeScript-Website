@@ -40,7 +40,13 @@ type Props = {
 const Index: React.FC<Props> = (props) => {
   const i = createInternational<typeof indexCopy>(useIntl())
   const Link = createIntlLink(props.pageContext.lang)
-
+  const localeLink = (props: Props, localeString: string)=> {
+    if(props.pageContext.lang === "en") {
+      return localeString
+    } else {
+      return `/${props.pageContext.lang}${localeString}`
+    }
+  }
 
   useEffect(() => {
     // NOOP on tiny devices where we need to re-orient the arrows.
@@ -82,7 +88,7 @@ const Index: React.FC<Props> = (props) => {
 
       <div id="index-2">
         <Section color="blue" className="headline">
-          <AboveTheFold />
+          <AboveTheFold {...props} />
         </Section>
         <VersionBar />
 
@@ -108,13 +114,13 @@ const Index: React.FC<Props> = (props) => {
             <h2 id='get_started'>{i("index_2_started_title")}</h2>
             <Row>
                 <Col key='handbook' role="tablist">
-                    <GetStarted role="tab" href="/docs/handbook/intro.html" classes="tall handbook" title="index_2_started_handbook" subtitle="index_2_started_handbook_blurb" />
+                    <GetStarted role="tab" href={localeLink(props,"/docs/handbook/intro.html")} classes="tall handbook" title="index_2_started_handbook" subtitle="index_2_started_handbook_blurb" />
                 </Col>
                 <Col key='playground' role="tablist">
-                    <GetStarted role="tab" href="/play" classes="tall playground" title="nav_playground" subtitle="index_2_playground_blurb" />
+                    <GetStarted role="tab" href={localeLink(props, "/play")} classes="tall playground" title="nav_playground" subtitle="index_2_playground_blurb" />
                 </Col>
                 <Col key='download' role="tablist">
-                    <GetStarted role="tab" href="/download" classes="tall download" title="nav_download" subtitle="index_2_install" />
+                    <GetStarted role="tab" href={localeLink(props,"/download")} classes="tall download" title="nav_download" subtitle="index_2_install" />
                 </Col>
             </Row>
         </Section>
@@ -231,13 +237,13 @@ const Index: React.FC<Props> = (props) => {
           <h2 id='get_started_blue'>{i("index_2_started_title")}</h2>
             <Row>
                 <Col key='handbook' role="tablist">
-                    <GetStarted role="tab" href="/docs/handbook/intro.html" classes="short handbook" title="index_2_started_handbook" subtitle="index_2_started_handbook_blurb" />
+                    <GetStarted role="tab" href={localeLink(props,"/docs/handbook/intro.html")} classes="short handbook" title="index_2_started_handbook" subtitle="index_2_started_handbook_blurb" />
                 </Col>
                 <Col key='playground' role="tablist">
-                    <GetStarted role="tab" href="/play" classes="short playground" title="nav_playground" subtitle="index_2_playground_blurb" />
+                    <GetStarted role="tab" href={localeLink(props, "/play")} classes="short playground" title="nav_playground" subtitle="index_2_playground_blurb" />
                 </Col>
                 <Col key='download' role="tablist">
-                    <GetStarted role="tab" href="/download" classes="short download" title="nav_download" subtitle="index_2_install" />
+                    <GetStarted role="tab" href={localeLink(props,"/download")} classes="short download" title="nav_download" subtitle="index_2_install" />
                 </Col>
             </Row>
         </Section>

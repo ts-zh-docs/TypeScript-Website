@@ -63,4 +63,8 @@ export const setupRedirects = (
   //   "/assets/typescript-handbook.epub": "/docs/handbook/intro.html",
   //   "/assets/typescript-handbook.pdf": "/docs/handbook/intro.html"
   // })
+
+  addRedirects({
+    "/": "/zh"
+  });
 }

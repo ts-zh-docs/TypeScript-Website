@@ -9,6 +9,7 @@ type Props = {
 import "./css/tools.scss"
 import { createIntlLink } from "../../components/IntlLink"
 import { DevNav } from "../../components/devNav"
+import { localeLink } from "../../lib/localeLink"
 
 const Row = (props: { children: any, className?: string }) => <div className={[props.className, "row"].join(" ")}>{props.children}</div>
 const Col = (props: { children: any, className?: string }) => <div className={[props.className, "col1"].join(" ")}>{props.children}</div>
@@ -21,7 +22,7 @@ const Index: React.FC<Props> = (props) => {
     <div className="raised main-content-block">
       <Row>
         <Col>
-          <a className="cropper" href="/play">
+          <a className="cropper" href={localeLink(props, "/play")}>
             <img src={require("../../../static/images/tools/play.png").default} alt="Preview of the TypeScript Playground screenshot" />
             <p>Playground</p>
           </a>

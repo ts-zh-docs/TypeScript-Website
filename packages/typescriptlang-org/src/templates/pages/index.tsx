@@ -4,6 +4,7 @@ import { Layout } from "../../components/layout"
 import { Intl } from "../../components/Intl"
 import { VersionBar } from "../../components/VersionBar"
 import * as Adopt from "../../components/index/AdoptSteps"
+import { useLocation } from '@reach/router';
 
 import { MigrationStories, GitHubBar, OSS } from "../../components/index/MigrationStories"
 
@@ -40,8 +41,8 @@ type Props = {
 const Index: React.FC<Props> = (props) => {
   const i = createInternational<typeof indexCopy>(useIntl())
   const Link = createIntlLink(props.pageContext.lang)
-
-
+  const location = useLocation()
+  const currentUrl = location.href.substring(0, location.href.length - 1)
   useEffect(() => {
     // NOOP on tiny devices where we need to re-orient the arrows.
     if (window.innerWidth < 900) return
@@ -108,13 +109,13 @@ const Index: React.FC<Props> = (props) => {
             <h2 id='get_started'>{i("index_2_started_title")}</h2>
             <Row>
                 <Col key='handbook' role="tablist">
-                    <GetStarted role="tab" href="/docs/handbook/intro.html" classes="tall handbook" title="index_2_started_handbook" subtitle="index_2_started_handbook_blurb" />
+                    <GetStarted role="tab" href={currentUrl+"/docs/handbook/intro.html"} classes="tall handbook" title="index_2_started_handbook" subtitle="index_2_started_handbook_blurb" />
                 </Col>
                 <Col key='playground' role="tablist">
                     <GetStarted role="tab" href="/play" classes="tall playground" title="nav_playground" subtitle="index_2_playground_blurb" />
                 </Col>
                 <Col key='download' role="tablist">
-                    <GetStarted role="tab" href="/download" classes="tall download" title="nav_download" subtitle="index_2_install" />
+                    <GetStarted role="tab" href={currentUrl+"/download"} classes="tall download" title="nav_download" subtitle="index_2_install" />
                 </Col>
             </Row>
         </Section>
@@ -231,13 +232,13 @@ const Index: React.FC<Props> = (props) => {
           <h2 id='get_started_blue'>{i("index_2_started_title")}</h2>
             <Row>
                 <Col key='handbook' role="tablist">
-                    <GetStarted role="tab" href="/docs/handbook/intro.html" classes="short handbook" title="index_2_started_handbook" subtitle="index_2_started_handbook_blurb" />
+                    <GetStarted role="tab" href={currentUrl+"/docs/handbook/intro.html"} classes="short handbook" title="index_2_started_handbook" subtitle="index_2_started_handbook_blurb" />
                 </Col>
                 <Col key='playground' role="tablist">
                     <GetStarted role="tab" href="/play" classes="short playground" title="nav_playground" subtitle="index_2_playground_blurb" />
                 </Col>
                 <Col key='download' role="tablist">
-                    <GetStarted role="tab" href="/download" classes="short download" title="nav_download" subtitle="index_2_install" />
+                    <GetStarted role="tab" href={currentUrl+"/download"} classes="short download" title="nav_download" subtitle="index_2_install" />
                 </Col>
             </Row>
         </Section>

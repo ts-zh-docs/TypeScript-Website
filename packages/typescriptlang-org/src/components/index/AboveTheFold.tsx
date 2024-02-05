@@ -4,6 +4,7 @@ import { indexCopy } from "../../copy/en/index2"
 import { createInternational } from "../../lib/createInternational"
 import { useIntl } from "react-intl"
 import { EditorExamples } from "./EditorExamples"
+import { useLocation } from '@reach/router'
 
 const Row = (props: { children: any, className?: string }) => <div className={[props.className, "row"].join(" ")}>{props.children}</div>
 const Col = (props: { children: any, className?: string }) => <div className={[props.className, "col1"].join(" ")}>{props.children}</div>
@@ -31,7 +32,8 @@ const FluidButton = (props: { href?: string, onClick?: any, title: string, subti
 export const AboveTheFold = () => {
   const [showCTALinks, setShowCTALinks] = useState(false)
   const i = createInternational<typeof indexCopy>(useIntl())
-
+  const location = useLocation()
+  const currentUrl =location.href.substring(0, location.href.length - 1)
   const Headline = () => {
     const onclick = (e) => {
       setShowCTALinks(true)
@@ -49,7 +51,7 @@ export const AboveTheFold = () => {
           <FluidButton
             title={i("index_2_cta_install")}
             subtitle={i("index_2_cta_install_subtitle")}
-            href="/download"
+            href={currentUrl+"/download"}
             onClick={onclick}
             icon={
               <svg width="21" height="5" viewBox="0 0 21 5" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -99,7 +101,7 @@ export const AboveTheFold = () => {
           <FluidButton
             title={i("index_2_cta_download")}
             subtitle={i("index_2_cta_download_subtitle")}
-            href="/download"
+            href={currentUrl+"/download"}
             onClick={() => event("Home Page CTA Exited", { link: "download" })}
             icon={
               <svg width="15" height="27" viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -121,7 +123,7 @@ export const AboveTheFold = () => {
             <img src={require("../../assets/index/handbook.jpg").default} width={"100%"} />
           </div>
           <div className="inline-buttons">
-            <a className='flat-button' href="/docs/handbook/intro.html">Web</a>
+            <a className='flat-button' href={currentUrl+"/docs/handbook/intro.html"}>Web</a>
           </div>
         </Col>
       </Row>

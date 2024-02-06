@@ -19,8 +19,8 @@ jobs:
             git commit --allow-empty -m "trigger build"
           fi
 
-  - name: Push changes
-    uses: ad-m/github-push-action@master
-    with:
-      github_token: ${{ secrets.READ_WRITE_PAT }}
-      force_with_lease: true
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.ORG_PAT }}
+          force_with_lease: true

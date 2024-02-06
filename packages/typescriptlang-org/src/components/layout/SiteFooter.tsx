@@ -15,102 +15,102 @@ export type Props = {
 
 const popularPages = [
   {
-    title: "Everyday Types",
-    url: "/docs/handbook/2/everyday-types.html",
-    description: "All of the common types in TypeScript",
+    title: "常见类型",
+    url: "/zh/docs/handbook/2/everyday-types.html",
+    description: "TypeScript 中所有常见的类型",
   },
   {
-    title: "Creating Types from Types",
-    url: "/docs/handbook/2/types-from-types.html",
-    description: "Techniques to make more elegant types",
+    title: "用现有类型创建新类型",
+    url: "/zh/docs/handbook/2/types-from-types.html",
+    description: "用于优雅地创建类型的技术",
   },
   {
-    title: "More on Functions",
-    url: "/docs/handbook/2/functions.html",
-    description: "How to provide types to functions in JavaScript",
+    title: "函数进阶",
+    url: "/zh/docs/handbook/2/functions.html",
+    description: "在 JavaScript 中为函数添加类型",
   },
   {
-    title: "More on Objects",
-    url: "/docs/handbook/2/objects.html",
-    description: "How to provide a type shape to JavaScript objects",
+    title: "对象进阶",
+    url: "/zh/docs/handbook/2/objects.html",
+    description: "为 JavaScript 对象添加类型",
   },
   {
-    title: "Narrowing",
-    url: "/docs/handbook/2/narrowing.html",
-    description: "How TypeScript infers types based on runtime behavior",
+    title: "缩小类型",
+    url: "/zh/docs/handbook/2/narrowing.html",
+    description: "TypeScript 通过运行时行为推断类型",
   },
   {
-    title: "Variable Declarations",
-    url: "/docs/handbook/variable-declarations.html",
-    description: "How to create and type JavaScript variables",
+    title: "变量声明",
+    url: "/zh/docs/handbook/variable-declarations.html",
+    description: "如何创建 JavaScript 变量并给它添加类型",
   },
   {
-    title: "TypeScript in 5 minutes",
-    url: "/docs/handbook/typescript-in-5-minutes.html",
-    description: "An overview of building a TypeScript web app",
+    title: "5 分钟速成 TypeScript",
+    url: "/zh/docs/handbook/typescript-in-5-minutes.html",
+    description: "构建 TypeScript web 应用程序概述",
   },
   {
-    title: "TSConfig Options",
-    url: "/tsconfig",
-    description: "All the configuration options for a project",
+    title: "TSConfig 选项",
+    url: "/zh/tsconfig",
+    description: "项目的所有配置选项",
   },
   {
-    title: "Classes",
-    url: "/docs/handbook/2/classes.html",
-    description: "How to provide types to JavaScript ES6 classes",
+    title: "类",
+    url: "/zh/docs/handbook/2/classes.html",
+    description: "给 JavaScript ES6 类添加类型",
   },
 ]
 
 const useTypeScriptLinks = [
   {
-    title: "Get Started",
-    url: "/docs",
+    title: "开始",
+    url: "/zh/docs",
   },
   {
-    title: "Download",
-    url: "/download",
+    title: "下载",
+    url: "/zh/download",
   },
   {
-    title: "Community",
-    url: "/community",
+    title: "社群",
+    url: "/zh/community",
   },
   {
-    title: "Playground",
-    url: "/play/",
+    title: "演练场",
+    url: "/zh/play/",
   },
   {
-    title: "TSConfig Ref",
-    url: "/tsconfig",
+    title: "TSConfig 参考",
+    url: "/zh/tsconfig",
   },
   {
-    title: "Code Samples",
-    url: "/play/#show-examples",
+    title: "代码示例",
+    url: "/zh/play/#show-examples",
   },
   {
-    title: "Why TypeScript",
-    url: "/why-create-typescript",
+    title: "为何选择 TypeScript",
+    url: "/zh/why-create-typescript",
   },
   {
-    title: "Design",
-    url: "/branding",
+    title: "设计",
+    url: "/zh/branding",
   },
 ]
 
 const communityLinks = [
   {
-    title: "Get Help",
-    url: "/community",
+    title: "获取帮助",
+    url: "/zh/community",
   },
   {
-    title: "Blog",
+    title: "博客",
     url: "https://devblogs.microsoft.com/typescript/",
   },
   {
-    title: "GitHub Repo",
+    title: "GitHub 仓库",
     url: "https://github.com/microsoft/TypeScript/#readme",
   },
   {
-    title: "Community Chat",
+    title: "社群交流",
     url: "https://discord.gg/typescript",
   },
   {
@@ -127,14 +127,14 @@ const communityLinks = [
     url: "https://stackoverflow.com/questions/tagged/typescript",
   },
   {
-    title: "Web Repo",
-    url: "https://github.com/microsoft/TypeScript-Website",
+    title: "中文文档仓库",
+    url: "https://github.com/ts-zh-docs/TypeScript-zh-Website",
   },
 ]
 
 const faviconForURL = (url: string) => {
   switch (url) {
-    case "https://github.com/microsoft/TypeScript-Website":
+    case "https://github.com/ts-zh-docs/TypeScript-zh-Website":
     case "https://github.com/microsoft/TypeScript/#readme":
       return (
         <svg
@@ -240,7 +240,7 @@ export const SiteFooter = (props: Props) => {
 
       {hideDocs ? null :
         <section id="popular">
-          <h3>Popular Documentation Pages</h3>
+          <h3>热门文档页面</h3>
           <ul>
             {popularPages.map(page => (
               <li key={page.url}>
@@ -283,7 +283,7 @@ export const SiteFooter = (props: Props) => {
               fillRule="evenodd"
             />
           </svg>
-          <p>Made with &#9829; in Redmond, Boston, SF &amp; Dublin</p>
+          <p>在雷德蒙德、波士顿、旧金山和都柏林，用 &#9829; 共同创造</p>
 
           <a href="">
             <img
@@ -295,13 +295,13 @@ export const SiteFooter = (props: Props) => {
             />
           </a>
           <p>
-            © 2012-{new Date().getFullYear()} Microsoft
+            © 2012-{new Date().getFullYear()} 微软
             <br />
             <a
               href="https://go.microsoft.com/fwlink/?LinkId=521839"
               title="Microsoft Privacy Policy"
             >
-            { lang === "ko" ? "개인정보처리방침 및 위치정보이용약관" : "Privacy"}
+            隐私政策
             </a>
             {lang === "fr" ?
               <a
@@ -316,7 +316,7 @@ export const SiteFooter = (props: Props) => {
         </article>
 
         <article id="using-typescript">
-          <h3>Using TypeScript</h3>
+          <h3>使用 TypeScript</h3>
           <ul>
             {normalLinks.map(page => (
               <li key={page.url}>
@@ -341,7 +341,7 @@ export const SiteFooter = (props: Props) => {
         </article>
 
         <article id="community-links">
-          <h3>Community</h3>
+          <h3>社区</h3>
           <ul>
             {communityLinks.map(page => {
               const favicon = faviconForURL(page.url)

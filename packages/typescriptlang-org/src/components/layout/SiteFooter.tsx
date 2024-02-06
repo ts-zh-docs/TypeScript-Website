@@ -16,63 +16,63 @@ export type Props = {
 const popularPages = [
   {
     title: "常见类型",
-    url: "/docs/handbook/2/everyday-types.html",
+    url: "/zh/docs/handbook/2/everyday-types.html",
     description: "TypeScript 中所有常见的类型",
   },
   {
     title: "用现有类型创建新类型",
-    url: "/docs/handbook/2/types-from-types.html",
+    url: "/zh/docs/handbook/2/types-from-types.html",
     description: "用于优雅地创建类型的技术",
   },
   {
     title: "函数进阶",
-    url: "/docs/handbook/2/functions.html",
+    url: "/zh/docs/handbook/2/functions.html",
     description: "在 JavaScript 中为函数添加类型",
   },
   {
     title: "对象进阶",
-    url: "/docs/handbook/2/objects.html",
+    url: "/zh/docs/handbook/2/objects.html",
     description: "为 JavaScript 对象添加类型",
   },
   {
     title: "缩小类型",
-    url: "/docs/handbook/2/narrowing.html",
+    url: "/zh/docs/handbook/2/narrowing.html",
     description: "TypeScript 通过运行时行为推断类型的方式",
   },
   {
     title: "变量声明",
-    url: "/docs/handbook/variable-declarations.html",
-    description: "如何创建 JavaScript 变量并给它赋类型",
+    url: "/zh/docs/handbook/variable-declarations.html",
+    description: "如何创建 JavaScript 变量并给它添加类型",
   },
   {
     title: "5 分钟速成 TypeScript",
-    url: "/docs/handbook/typescript-in-5-minutes.html",
+    url: "/zh/docs/handbook/typescript-in-5-minutes.html",
     description: "构建 TypeScript web 应用程序概述",
   },
   {
     title: "TSConfig 选项",
-    url: "/tsconfig",
+    url: "/zh/tsconfig",
     description: "项目的所有配置选项",
   },
   {
     title: "类",
-    url: "/docs/handbook/2/classes.html",
-    description: "给 JavaScript ES6 类赋类型的方式",
+    url: "/zh/docs/handbook/2/classes.html",
+    description: "给 JavaScript ES6 类添加类型的方式",
   },
 ]
 
 const useTypeScriptLinks = [
   {
     title: "开始",
-    url: "/docs",
+    url: "/zh/docs",
   },
   {
     title: "下载",
-    url: "/download",
+    url: "/zh/download",
   },
   {
     title: "社群",
-    url: "/community",
+    url: "/zh/community",
   },
   {
     title: "演练场",
@@ -80,26 +80,26 @@ const useTypeScriptLinks = [
   },
   {
     title: "TSConfig 参考",
-    url: "/tsconfig",
+    url: "/zh/tsconfig",
   },
   {
     title: "代码示例",
-    url: "/play/#show-examples",
+    url: "/zh/play/#show-examples",
   },
   {
     title: "为何选择 TypeScript",
-    url: "/why-create-typescript",
+    url: "/zh/why-create-typescript",
   },
   {
     title: "设计",
-    url: "/branding",
+    url: "/zh/branding",
   },
 ]
 
 const communityLinks = [
   {
     title: "获取帮助",
-    url: "/community",
+    url: "/zh/community",
   },
   {
     title: "博客",
@@ -134,7 +134,7 @@ const communityLinks = [
 
 const faviconForURL = (url: string) => {
   switch (url) {
-    case "https://github.com/microsoft/TypeScript-Website":
+    case "https://github.com/microsoft/TypeScript-zh-Website":
     case "https://github.com/microsoft/TypeScript/#readme":
       return (
         <svg

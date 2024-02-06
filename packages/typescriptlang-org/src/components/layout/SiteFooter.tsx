@@ -27,12 +27,12 @@ const popularPages = [
   {
     title: "函数进阶",
     url: "/docs/handbook/2/functions.html",
-    description: "在 JavaScript 中向函数赋类型的方式",
+    description: "在 JavaScript 中为函数添加类型",
   },
   {
     title: "对象进阶",
     url: "/docs/handbook/2/objects.html",
-    description: "向 JavaScript 对象赋类型的方式",
+    description: "为 JavaScript 对象添加类型",
   },
   {
     title: "缩小类型",

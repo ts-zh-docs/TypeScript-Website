@@ -5,6 +5,12 @@ import { createInternational } from "../../lib/createInternational"
 import { useIntl } from "react-intl"
 import { EditorExamples } from "./EditorExamples"
 
+import { localeLink } from "../../lib/localeLink"
+
+type Props = {
+  pageContext: any
+}
+
 const Row = (props: { children: any, className?: string }) => <div className={[props.className, "row"].join(" ")}>{props.children}</div>
 const Col = (props: { children: any, className?: string }) => <div className={[props.className, "col1"].join(" ")}>{props.children}</div>
 const Col2 = (props: { children: any }) => <div className="col2">{props.children}</div>
@@ -28,7 +34,7 @@ const FluidButton = (props: { href?: string, onClick?: any, title: string, subti
   </a>
 )
 
-export const AboveTheFold = () => {
+export const AboveTheFold = (props: Props) => {
   const [showCTALinks, setShowCTALinks] = useState(false)
   const i = createInternational<typeof indexCopy>(useIntl())
 
@@ -49,7 +55,7 @@ export const AboveTheFold = () => {
           <FluidButton
             title={i("index_2_cta_install")}
             subtitle={i("index_2_cta_install_subtitle")}
-            href="/download"
+            href={localeLink(props, "/download")}
             onClick={onclick}
             icon={
               <svg width="21" height="5" viewBox="0 0 21 5" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -75,7 +81,7 @@ export const AboveTheFold = () => {
           <FluidButton
             title={i("index_2_cta_play")}
             subtitle={i("index_2_cta_play_subtitle")}
-            href="/play"
+            href={localeLink(props, "/play")}
             onClick={() => event("Home Page CTA Exited", { link: "playground" })}
             icon={
               <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -99,7 +105,7 @@ export const AboveTheFold = () => {
           <FluidButton
             title={i("index_2_cta_download")}
             subtitle={i("index_2_cta_download_subtitle")}
-            href="/download"
+            href={localeLink(props, "/download")}
             onClick={() => event("Home Page CTA Exited", { link: "download" })}
             icon={
               <svg width="15" height="27" viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -121,7 +127,7 @@ export const AboveTheFold = () => {
             <img src={require("../../assets/index/handbook.jpg").default} width={"100%"} />
           </div>
           <div className="inline-buttons">
-            <a className='flat-button' href="/docs/handbook/intro.html">Web</a>
+            <a className='flat-button' href={localeLink(props, "/docs/handbook/intro.html")}>Web</a>
           </div>
         </Col>
       </Row>

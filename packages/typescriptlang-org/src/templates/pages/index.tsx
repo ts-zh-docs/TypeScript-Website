@@ -24,6 +24,7 @@ import {Code as Del1} from "../../components/index/twoslash/generated/Index2Del1
 import {Code as Del2} from "../../components/index/twoslash/generated/Index2Del2RM"
 import {Code as Del3} from "../../components/index/twoslash/generated/Index2Del3JS.js"
 
+import { localeLink } from "../../lib/localeLink"
 
 const Section = (props: { children: any, color: string, className?: string }) =>
   <div key={props.color} className={props.color + " " + (props.className ?? "")}><div className="container">{props.children}</div></div>
@@ -40,7 +41,6 @@ type Props = {
 const Index: React.FC<Props> = (props) => {
   const i = createInternational<typeof indexCopy>(useIntl())
   const Link = createIntlLink(props.pageContext.lang)
-
 
   useEffect(() => {
     // NOOP on tiny devices where we need to re-orient the arrows.
@@ -78,11 +78,11 @@ const Index: React.FC<Props> = (props) => {
 
 
   return (
-    <Layout title="JavaScript With Syntax For Types." description="TypeScript extends JavaScript by adding types to the language. TypeScript speeds up your development experience by catching errors and providing fixes before you even run your code." lang={props.pageContext.lang} suppressCustomization suppressDocRecommendations>
+    <Layout title="带有类型的 JavaScript" description="TypeScript 通过添加类型来扩展 JavaScript。TypeScript 通过在运行代码之前捕捉错误并提供修复来提升开发体验。" lang={props.pageContext.lang} suppressCustomization suppressDocRecommendations>
 
       <div id="index-2">
         <Section color="blue" className="headline">
-          <AboveTheFold />
+          <AboveTheFold {...props} />
         </Section>
         <VersionBar />
 
@@ -108,13 +108,13 @@ const Index: React.FC<Props> = (props) => {
             <h2 id='get_started'>{i("index_2_started_title")}</h2>
             <Row>
                 <Col key='handbook' role="tablist">
-                    <GetStarted role="tab" href="/docs/handbook/intro.html" classes="tall handbook" title="index_2_started_handbook" subtitle="index_2_started_handbook_blurb" />
+                    <GetStarted role="tab" href={localeLink(props,"/docs/handbook/intro.html")} classes="tall handbook" title="index_2_started_handbook" subtitle="index_2_started_handbook_blurb" />
                 </Col>
                 <Col key='playground' role="tablist">
-                    <GetStarted role="tab" href="/play" classes="tall playground" title="nav_playground" subtitle="index_2_playground_blurb" />
+                    <GetStarted role="tab" href={localeLink(props, "/play")} classes="tall playground" title="nav_playground" subtitle="index_2_playground_blurb" />
                 </Col>
                 <Col key='download' role="tablist">
-                    <GetStarted role="tab" href="/download" classes="tall download" title="nav_download" subtitle="index_2_install" />
+                    <GetStarted role="tab" href={localeLink(props,"/download")} classes="tall download" title="nav_download" subtitle="index_2_install" />
                 </Col>
             </Row>
         </Section>
@@ -231,13 +231,13 @@ const Index: React.FC<Props> = (props) => {
           <h2 id='get_started_blue'>{i("index_2_started_title")}</h2>
             <Row>
                 <Col key='handbook' role="tablist">
-                    <GetStarted role="tab" href="/docs/handbook/intro.html" classes="short handbook" title="index_2_started_handbook" subtitle="index_2_started_handbook_blurb" />
+                    <GetStarted role="tab" href={localeLink(props,"/docs/handbook/intro.html")} classes="short handbook" title="index_2_started_handbook" subtitle="index_2_started_handbook_blurb" />
                 </Col>
                 <Col key='playground' role="tablist">
-                    <GetStarted role="tab" href="/play" classes="short playground" title="nav_playground" subtitle="index_2_playground_blurb" />
+                    <GetStarted role="tab" href={localeLink(props, "/play")} classes="short playground" title="nav_playground" subtitle="index_2_playground_blurb" />
                 </Col>
                 <Col key='download' role="tablist">
-                    <GetStarted role="tab" href="/download" classes="short download" title="nav_download" subtitle="index_2_install" />
+                    <GetStarted role="tab" href={localeLink(props,"/download")} classes="short download" title="nav_download" subtitle="index_2_install" />
                 </Col>
             </Row>
         </Section>

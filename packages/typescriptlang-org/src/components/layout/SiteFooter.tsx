@@ -37,7 +37,7 @@ const popularPages = [
   {
     title: "缩小类型",
     url: "/zh/docs/handbook/2/narrowing.html",
-    description: "TypeScript 通过运行时行为推断类型的方式",
+    description: "TypeScript 通过运行时行为推断类型",
   },
   {
     title: "变量声明",
@@ -57,7 +57,7 @@ const popularPages = [
   {
     title: "类",
     url: "/zh/docs/handbook/2/classes.html",
-    description: "给 JavaScript ES6 类添加类型的方式",
+    description: "给 JavaScript ES6 类添加类型",
   },
 ]
 
@@ -127,14 +127,14 @@ const communityLinks = [
     url: "https://stackoverflow.com/questions/tagged/typescript",
   },
   {
-    title: "Web 仓库",
+    title: "中文文档仓库",
     url: "https://github.com/ts-zh-docs/TypeScript-zh-Website",
   },
 ]
 
 const faviconForURL = (url: string) => {
   switch (url) {
-    case "https://github.com/microsoft/TypeScript-zh-Website":
+    case "https://github.com/ts-zh-docs/TypeScript-zh-Website":
     case "https://github.com/microsoft/TypeScript/#readme":
       return (
         <svg
@@ -301,7 +301,7 @@ export const SiteFooter = (props: Props) => {
               href="https://go.microsoft.com/fwlink/?LinkId=521839"
               title="Microsoft Privacy Policy"
             >
-            { lang === "ko" ? "개인정보처리방침 및 위치정보이용약관" : "Privacy"}
+            隐私政策
             </a>
             {lang === "fr" ?
               <a
@@ -316,7 +316,7 @@ export const SiteFooter = (props: Props) => {
         </article>
 
         <article id="using-typescript">
-          <h3>Using TypeScript</h3>
+          <h3>使用 TypeScript</h3>
           <ul>
             {normalLinks.map(page => (
               <li key={page.url}>
@@ -341,7 +341,7 @@ export const SiteFooter = (props: Props) => {
         </article>
 
         <article id="community-links">
-          <h3>Community</h3>
+          <h3>社区</h3>
           <ul>
             {communityLinks.map(page => {
               const favicon = faviconForURL(page.url)

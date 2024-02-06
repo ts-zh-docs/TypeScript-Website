@@ -78,7 +78,7 @@ const Index: React.FC<Props> = (props) => {
 
 
   return (
-    <Layout title="JavaScript With Syntax For Types." description="TypeScript extends JavaScript by adding types to the language. TypeScript speeds up your development experience by catching errors and providing fixes before you even run your code." lang={props.pageContext.lang} suppressCustomization suppressDocRecommendations>
+    <Layout title="带有类型的 JavaScript" description="TypeScript 通过添加类型来扩展 JavaScript。TypeScript 通过在运行代码之前捕捉错误并提供修复来提升开发体验。" lang={props.pageContext.lang} suppressCustomization suppressDocRecommendations>
 
       <div id="index-2">
         <Section color="blue" className="headline">

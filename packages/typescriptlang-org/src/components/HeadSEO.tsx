@@ -31,7 +31,7 @@ export const HeadSEO = (props: SeoProps) => {
 
   return (
     <>
-      <Helmet title={props.title} titleTemplate={"TypeScript: %s"}>
+      <Helmet title={props.title} titleTemplate={"TypeScript 中文文档：%s"}>
         <meta name="description" key="description" content={props.description} />
         { staging ? <meta name="robots" content="noindex" />: null }
         {

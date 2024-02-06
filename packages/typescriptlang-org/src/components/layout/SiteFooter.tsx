@@ -76,7 +76,7 @@ const useTypeScriptLinks = [
   },
   {
     title: "演练场",
-    url: "/play/",
+    url: "/zh/play/",
   },
   {
     title: "TSConfig 参考",

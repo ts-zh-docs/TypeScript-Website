@@ -26,7 +26,7 @@ const Index: React.FC<Props> = (props) => {
 
     <div className="raised main-content-block">
       <h2>在你的项目中使用 TypeScript</h2>
-      <p>在每个项目中依次设置 TypeScript 可以让你的每个项目都可以使用不同版本的 TypeScript，这样可以保持每个项目的一致性。</p>
+      <p>在每个项目中单独设置 TypeScript 可以让你的每个项目使用不同版本的 TypeScript，这样可以保持每个项目的一致性。</p>
 
       <section style={{ display: "flex", flexWrap: "wrap" }}>
         <div style={{ borderRight: "1px lightgrey solid", padding: "1rem", flex: 1, minWidth: "240px" }}>

@@ -44,7 +44,6 @@ module.exports = {
         theme_color: `#3178C6`,
         display: `standalone`,
         icon: `static/icons/ts-logo-512.png`,
-        baidu_site_verification: `codeva-YrGAWpxYv8`
       },
     },
 

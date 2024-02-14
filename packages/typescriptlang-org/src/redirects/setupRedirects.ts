@@ -64,5 +64,8 @@ export const setupRedirects = (
   //   "/assets/typescript-handbook.pdf": "/docs/handbook/intro.html"
   // })
 
+addRedirects({
+  "/": "/zh"
+})
 
 }

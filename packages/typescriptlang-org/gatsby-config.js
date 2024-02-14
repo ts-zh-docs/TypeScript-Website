@@ -127,7 +127,7 @@ module.exports = {
       resolve: "gatsby-plugin-i18n",
       options: {
         langKeyDefault: "zh",
-        useLangKeyLayout: false,
+        useLangKeyLayout: true,
       },
     },
 

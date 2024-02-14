@@ -37,6 +37,7 @@ export const HeadSEO = (props: SeoProps) => {
         {
           Object.keys(ogTags).map(k => <meta key={k} property={k} content={ogTags[k]} />)
         }
+        <meta name="baidu-site-verification" content="codeva-YrGAWpxYv8" />
       </Helmet>
     </>
   )

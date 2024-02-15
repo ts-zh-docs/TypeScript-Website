@@ -86,7 +86,7 @@ const Index: React.FC<Props> = (props) => {
     <Layout title={i("doc_layout_title")} description={i("doc_layout_description")} lang={props.pageContext.lang}>
 
       <div className="main-content-block headline" style={{ marginTop: "40px" }}>
-        <h1>TypeScript Documentation</h1>
+        <h1>TypeScript 文档</h1>
       </div>
 
       <div className="main-content-block container handbook-content" >

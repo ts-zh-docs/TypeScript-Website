@@ -303,6 +303,7 @@ export const SiteFooter = (props: Props) => {
             >
             隐私政策
             </a>
+            <a href="https://go.microsoft.com/fwlink/?LinkID=206977">Terms of Use</a>
             {lang === "fr" ?
               <a
                 lang="fr"

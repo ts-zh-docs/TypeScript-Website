@@ -5,11 +5,7 @@
     "packages/*"
   ],
   "engines": {
-<<<<<<< HEAD
-    "node": "16.x"
-=======
     "node": ">=18"
->>>>>>> 7adbdaa9a5bc8d51ffa124f588bf7e387a3ac348
   },
   "devDependencies": {
     "concurrently": "^5.1.0",

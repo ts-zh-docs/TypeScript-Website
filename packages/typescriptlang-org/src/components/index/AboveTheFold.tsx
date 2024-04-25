@@ -73,13 +73,8 @@ export const AboveTheFold = (props: Props) => {
           <FluidButton
             title={i("index_2_cta_play")}
             subtitle={i("index_2_cta_play_subtitle")}
-<<<<<<< HEAD
             href={localeLink(props, "/play")}
-            onClick={() => event("Home Page CTA Exited", { link: "playground" })}
-=======
-            href="/play"
             onClick={() => ({ link: "playground" })}
->>>>>>> 7adbdaa9a5bc8d51ffa124f588bf7e387a3ac348
             icon={
               <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clipPath="url(#clip0)">
@@ -102,13 +97,8 @@ export const AboveTheFold = (props: Props) => {
           <FluidButton
             title={i("index_2_cta_download")}
             subtitle={i("index_2_cta_download_subtitle")}
-<<<<<<< HEAD
             href={localeLink(props, "/download")}
-            onClick={() => event("Home Page CTA Exited", { link: "download" })}
-=======
-            href="/download"
             onClick={() => ({ link: "download" })}
->>>>>>> 7adbdaa9a5bc8d51ffa124f588bf7e387a3ac348
             icon={
               <svg width="15" height="27" viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.5 0.5V19M7.5 19L1 13M7.5 19L13 13" stroke="black" strokeWidth="1.5" />

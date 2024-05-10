@@ -80,13 +80,10 @@ packages/sandbox/src/release_data.ts
 packages/typescriptlang-org/src/lib/documentationNavigation.ts
 
 .idea/
-<<<<<<< HEAD
 .vercel
-=======
 
 **/.vscode/*
 !**/.vscode/tasks.json
 !**/.vscode/settings.template.json
 !**/.vscode/launch.json
 !**/.vscode/extensions.json
->>>>>>> d82e06dca59d6827c226bb475d99fe1e77fcc7d5

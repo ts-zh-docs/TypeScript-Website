@@ -7,16 +7,16 @@
 本地开发环境构建步骤：
 
 1. 使用 Node 18.x 版本。
-2. 使用 `yarn` 命令安装依赖。
+2. 使用 `pnpm` 命令安装依赖。
 
 ```shell
-yarn docs-sync pull ts-zh-docs/TypeScript-zh-Website#main 1 
-yarn bootstrap
-yarn start
+pnpm docs-sync pull ts-zh-docs/TypeScript-zh-Website#main 1 
+pnpm bootstrap
+pnpm start
 ```
 
 本地生产环境构建步骤：
 
 环境同上。
 
-直接运行 `yarn run build-and-deploy`，可以去 [`package.json`](https://github.com/ts-zh-docs/TypeScript-Website/blob/v2/package.json#L48) 中查看细节。
+直接运行 `pnpm run build-and-deploy`，可以去 [`package.json`](https://github.com/ts-zh-docs/TypeScript-Website/blob/v2/package.json#L67) 中查看细节。

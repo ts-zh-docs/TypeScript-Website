@@ -62,29 +62,11 @@
     "update-snapshots": "pnpm run --filter=typescriptlang-org update-snapshots",
     "clean": "pnpm run --filter=typescriptlang-org gatsby clean",
     "clean-twoslash": "rm -rf packages/.cache/twoslash",
-<<<<<<< HEAD
-    "test": "CI=true yarn workspaces foreach -v -t --exclude root run test",
-    "update-test-snapshots": "CI=true yarn workspaces foreach --include gatsby-remark-shiki-twoslash  --include @typescript/twoslash --include shiki-twoslash --include @typescript/vfs run test -u",
-    "build-and-deploy": "yarn docs-sync pull ts-zh-docs/TypeScript-zh-Website#main 1 && yarn bootstrap && yarn workspace typescriptlang-org setup-playground-cache-bust && yarn build && yarn build-site && cp -r packages/typescriptlang-org/public site"
-  },
-  "dependencies": {
-    "@oss-docs/sync": "^1.1.4",
-    "@types/express": "^4.17.6",
-    "gray-matter": "4.0.3",
-    "node-polyfill-webpack-plugin": "^2.0.1",
-    "serve-handler": "^6.1.2",
-    "xmldom": "^0.5.0"
-  },
-  "repository": "ts-zh-docs/TypeScript-Website",
-  "author": "Xavi Lee <xavilee2002@qq.com>",
-=======
     "test": "CI=true pnpm -r run test",
-    "update-test-snapshots": "CI=true pnpm run --filter=@typescript/twoslash --filter=@typescript/vfs test -u"
+    "update-test-snapshots": "CI=true pnpm run --filter=@typescript/twoslash --filter=@typescript/vfs test -u",
+    "build-and-deploy": "pnpm install && pnpm bootstrap && pnpm docs-sync pull ts-zh-docs/TypeScript-Website-localizations#main 1 && pnpm run --filter=typescriptlang-org setup-playground-cache-bust && pnpm build &&pnpm build-site && cp -r packages/typescriptlang-org/public site"
   },
   "dependencies": {},
-  "repository": "microsoft/TypeScript-Website",
-  "author": "Deploy Bot <ortam@microsoft.com>",
->>>>>>> 4e0d4e5848df8b36a7271bc5a43bb7b028f591ce
   "auto": {
     "plugins": [
       "npm"

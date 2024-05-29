@@ -6,7 +6,7 @@
     "pnpm": ">=9"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.3",
+    "@changesets/cli": "^2.27.5",
     "@oss-docs/sync": "^1.1.4",
     "@types/express": "^4.17.6",
     "@types/node": "^18.19.33",
@@ -66,7 +66,6 @@
     "update-test-snapshots": "CI=true pnpm run --filter=@typescript/twoslash --filter=@typescript/vfs test -u",
     "build-and-deploy": "pnpm docs-sync pull ts-zh-docs/TypeScript-zh-Website#main 1 && pnpm bootstrap && pnpm run --filter=typescriptlang-org setup-playground-cache-bust && pnpm build && pnpm build-site && cp -r packages/typescriptlang-org/public site"
   },
-  "dependencies": {},
   "repository": "microsoft/TypeScript-Website",
   "author": "Deploy Bot <ortam@microsoft.com>",
   "auto": {

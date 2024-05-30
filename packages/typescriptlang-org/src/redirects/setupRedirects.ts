@@ -65,7 +65,7 @@ export const setupRedirects = (
   // })
 
 addRedirects({
-  "/": "/zh"
+  "/": "/zh/"
 })
 
 }

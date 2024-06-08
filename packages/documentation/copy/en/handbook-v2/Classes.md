@@ -150,11 +150,14 @@ class Point {
 
 ```ts twoslash
 class Point {
-  // Overloads
-  constructor(x: number, y: string);
-  constructor(s: string);
-  constructor(xs: any, y?: any) {
-    // TBD
+  x: number = 0;
+  y: number = 0;
+
+  // Constructor overloads
+  constructor(x: number, y: number);
+  constructor(xy: string);
+  constructor(x: string | number, y: number = 0) {
+    // Code logic here
   }
 }
 ```
@@ -250,7 +253,6 @@ TypeScript has some special inference rules for accessors:
 
 - If `get` exists but no `set`, the property is automatically `readonly`
 - If the type of the setter parameter is not specified, it is inferred from the return type of the getter
-- Getters and setters must have the same [Member Visibility](#member-visibility)
 
 Since [TypeScript 4.3](https://devblogs.microsoft.com/typescript/announcing-typescript-4-3/), it is possible to have accessors with different types for getting and setting.
 

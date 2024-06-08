@@ -231,10 +231,12 @@ The detected module format of input `.ts`/`.tsx`/`.mts`/`.cts` files determines 
 The emit format of each file is determined by the [detected module format](#module-format-detection) of each file. ESM emit is similar to [`--module esnext`](#es2015-es2020-es2022-esnext), but has a special transformation for `import x = require("...")`, which is not allowed in `--module esnext`:
 
 ```ts
+// @Filename: main.ts
 import x = require("mod");
 ```
 
 ```js
+// @Filename: main.js
 import { createRequire as _createRequire } from "module";
 const __require = _createRequire(import.meta.url);
 const x = __require("mod");
@@ -243,11 +245,13 @@ const x = __require("mod");
 CommonJS emit is similar to [`--module commonjs`](#commonjs), but dynamic `import()` calls are not transformed. Emit here is shown with `esModuleInterop` enabled:
 
 ```ts
+// @Filename: main.ts
 import fs from "fs"; // transformed
 const dynamic = import("mod"); // not transformed
 ```
 
 ```js
+// @Filename: main.js
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -322,6 +326,7 @@ export default "default export";
 #### Examples
 
 ```ts
+// @Filename: main.ts
 import x, { y, z } from "mod";
 import * as mod from "mod";
 const dynamic = import("mod");
@@ -332,6 +337,7 @@ export default "default export";
 ```
 
 ```js
+// @Filename: main.js
 import x, { y, z } from "mod";
 import * as mod from "mod";
 const dynamic = import("mod");
@@ -355,6 +361,7 @@ export default "default export";
 > Output is shown with `esModuleInterop: false`.
 
 ```ts
+// @Filename: main.ts
 import x, { y, z } from "mod";
 import * as mod from "mod";
 const dynamic = import("mod");
@@ -365,6 +372,7 @@ export default "default export";
 ```
 
 ```js
+// @Filename: main.js
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.e1 = void 0;
@@ -378,6 +386,7 @@ exports.default = "default export";
 ```
 
 ```ts
+// @Filename: main.ts
 import mod = require("mod");
 console.log(mod);
 
@@ -388,6 +397,7 @@ export = {
 ```
 
 ```js
+// @Filename: main.js
 "use strict";
 const mod = require("mod");
 console.log(mod);
@@ -407,6 +417,7 @@ module.exports = {
 #### Examples
 
 ```ts
+// @Filename: main.ts
 import x, { y, z } from "mod";
 import * as mod from "mod";
 const dynamic = import("mod");
@@ -417,6 +428,7 @@ export default "default export";
 ```
 
 ```js
+// @Filename: main.js
 System.register(["mod"], function (exports_1, context_1) {
     "use strict";
     var mod_1, mod, dynamic, e1;
@@ -450,6 +462,7 @@ System.register(["mod"], function (exports_1, context_1) {
 #### Examples
 
 ```ts
+// @Filename: main.ts
 import x, { y, z } from "mod";
 import * as mod from "mod";
 const dynamic = import("mod");
@@ -460,6 +473,7 @@ export default "default export";
 ```
 
 ```js
+// @Filename: main.js
 define(["require", "exports", "mod", "mod"], function (require, exports, mod_1, mod) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
@@ -484,6 +498,7 @@ define(["require", "exports", "mod", "mod"], function (require, exports, mod_1, 
 #### Examples
 
 ```ts
+// @Filename: main.ts
 import x, { y, z } from "mod";
 import * as mod from "mod";
 const dynamic = import("mod");
@@ -494,6 +509,7 @@ export default "default export";
 ```
 
 ```js
+// @Filename: main.js
 (function (factory) {
     if (typeof module === "object" && typeof module.exports === "object") {
         var v = factory(require, exports);
@@ -985,7 +1001,7 @@ import foo = require("pkg/dist/foo"); // ✅ require, no extension needed
 
 #### package.json `"imports"` and self-name imports
 
-When `moduleResolution` is set to `node16`, `nodenext`, or `bundler`, and `resolvePackageJsonImports` is not disabled, TypeScript will attempt to resolve import paths beginning with `#` through the the `"imports"` field of the nearest ancestor package.json of the importing file. Similarly, when [package.json `"exports"` lookups](#packagejson-exports) are enabled, TypeScript will attempt to resolve import paths beginning with the current package name—that is, the value in the `"name"` field of the nearest ancestor package.json of the importing file—through the `"exports"` field of that package.json. Both of these features allow files in a package to import other files in the same package, replacing a relative import path.
+When `moduleResolution` is set to `node16`, `nodenext`, or `bundler`, and `resolvePackageJsonImports` is not disabled, TypeScript will attempt to resolve import paths beginning with `#` through the `"imports"` field of the nearest ancestor package.json of the importing file. Similarly, when [package.json `"exports"` lookups](#packagejson-exports) are enabled, TypeScript will attempt to resolve import paths beginning with the current package name—that is, the value in the `"name"` field of the nearest ancestor package.json of the importing file—through the `"exports"` field of that package.json. Both of these features allow files in a package to import other files in the same package, replacing a relative import path.
 
 TypeScript follows Node.js’s resolution algorithm for [`"imports"`](https://nodejs.org/api/packages.html#subpath-imports) and [self references](https://nodejs.org/api/packages.html#self-referencing-a-package-using-its-name) exactly up until a file path is resolved. At that point, TypeScript’s resolution algorithm forks based on whether the package.json containing the `"imports"` or `"exports"` being resolved belongs to a `node_modules` dependency or the local project being compiled (i.e., its directory contains the tsconfig.json file for the project that contains the importing file):
 

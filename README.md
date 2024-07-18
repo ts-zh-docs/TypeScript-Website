@@ -19,4 +19,4 @@ pnpm start
 
 环境同上。
 
-直接运行 `pnpm run build-and-deploy`，可以去 [`package.json`](https://github.com/ts-zh-docs/TypeScript-Website/blob/v2/package.json#L67) 中查看细节。
+直接运行 `pnpm run build-and-deploy`，可以去 [`package.json`](https://github.com/ts-zh-docs/TypeScript-Website/blob/v2/package.json#L68) 中查看细节。

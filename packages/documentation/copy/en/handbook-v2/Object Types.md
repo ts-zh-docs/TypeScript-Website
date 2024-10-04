@@ -413,7 +413,7 @@ If `SquareConfig` can have `color` and `width` properties with the above types, 
 interface SquareConfig {
   color?: string;
   width?: number;
-  [propName: string]: any;
+  [propName: string]: unknown;
 }
 ```
 
@@ -426,7 +426,6 @@ Since assigning `squareOptions` won't undergo excess property checks, the compil
 interface SquareConfig {
   color?: string;
   width?: number;
-  [propName: string]: any;
 }
 
 function createSquare(config: SquareConfig): { color: string; area: number } {
@@ -579,7 +578,7 @@ draw({ color: "blue", radius: 42 });
 draw({ color: "red", raidus: 42 });
 ```
 
-## Interfaces vs. Intersections
+## Interface Extension vs. Intersection
 
 We just looked at two ways to combine types which are similar, but are actually subtly different.
 With interfaces, we could use an `extends` clause to extend from other types, and we were able to do something similar with intersections and name the result with a type alias.

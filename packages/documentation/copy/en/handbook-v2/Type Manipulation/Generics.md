@@ -449,7 +449,7 @@ interface Consumer<T> {
   consume: (arg: T) => void;
 }
 ```
-Then we can use a `Consumer<Animal>` where a `Consumer<Cat>` is expected, because any function that is capable of accepting a `Cat` must also be capable of accepting an `Animal`.
+Then we can use a `Consumer<Animal>` where a `Consumer<Cat>` is expected, because any function that is capable of accepting an `Animal` must also be capable of accepting a `Cat`.
 This relationship is called *contravariance*: the relationship from `Consumer<T>` to `Consumer<U>` is the same as the relationship from `U` to `T`.
 Note the reversal of direction as compared to covariance! This is why contravariance "cancels itself out" but covariance doesn't.
 

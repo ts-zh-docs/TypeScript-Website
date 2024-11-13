@@ -110,7 +110,7 @@ const getTypeScriptNPMVersions = async () => {
   // prettier-ignore
   let siteReleaseNotesURL = `/docs/handbook/release-notes/typescript-${semver.major(stable)}-${semver.minor(stable)}.html`
   // prettier-ignore
-  let releasePostURL = `https://devblogs.microsoft.com/typescript/announcing-typescript-${semver.major(rc)}-${semver.minor(rc)}/`
+  let releasePostURL = `https://devblogs.microsoft.com/typescript/announcing-typescript-${semver.major(stable)}-${semver.minor(stable)}/`
   // prettier-ignore
   let releaseNotesMDPath = `../../documentation/copy/en/release-notes/TypeScript ${semver.major(stable)}.${semver.minor(stable)}.md`
   // prettier-ignore

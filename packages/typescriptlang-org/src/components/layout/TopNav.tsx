@@ -104,7 +104,7 @@ export const SiteNav = (props: Props) => {
               <li className="nav-item" role="none presentation"><IntlLink id="tab2" role="tab" to="/docs/"><span>{i("nav_documentation_short")}</span></IntlLink></li>
               <li className="nav-item show-only-large" role="none presentation"><IntlLink id="tab3" role="tab" to="/docs/handbook/intro.html">{i("nav_handbook")}</IntlLink></li>
               <li className="nav-item" role="none presentation"><IntlLink id="tab4" role="tab" to="/community">{i("nav_community")}</IntlLink></li>
-              <li className="nav-item show-only-largest" role="none presentation"><IntlLink id="tab5" role="tab" to="/play">{i("nav_playground")}</IntlLink></li>
+              <li className="nav-item show-only-largest" role="none presentation"><IntlLink id="tab5" role="tab" to="/play/">{i("nav_playground")}</IntlLink></li>
               <li className="nav-item" role="none presentation"><IntlLink id="tab6" role="tab" to="/tools">{i("nav_tools")}</IntlLink></li>
             </ul>
           </nav>

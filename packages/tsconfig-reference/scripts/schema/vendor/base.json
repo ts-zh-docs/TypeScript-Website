@@ -376,6 +376,7 @@
             "newLine": {
               "description": "Set the newline character for emitting files.",
               "type": "string",
+              "default": "lf",
               "anyOf": [
                 {
                   "enum": [
@@ -658,7 +659,7 @@
             "forceConsistentCasingInFileNames": {
               "description": "Ensure that casing is correct in imports.",
               "type": "boolean",
-              "default": false,
+              "default": true,
               "markdownDescription": "Ensure that casing is correct in imports.\n\nSee more: https://www.typescriptlang.org/tsconfig#forceConsistentCasingInFileNames"
             },
             "generateCpuProfile": {
@@ -1038,6 +1039,11 @@
             },
             "strictBuiltinIteratorReturn": {
               "description": "Built-in iterators are instantiated with a 'TReturn' type of 'undefined' instead of 'any'.",
+              "type": "boolean",
+              "default": false
+            },
+            "rewriteRelativeImportExtensions": {
+              "description": "Rewrite '.ts', '.tsx', '.mts', and '.cts' file extensions in relative import paths to their JavaScript equivalent in output files.",
               "type": "boolean",
               "default": false
             }

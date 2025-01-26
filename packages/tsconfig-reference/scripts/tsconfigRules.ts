@@ -114,6 +114,7 @@ export const relatedTo: [AnOption, AnOption[]][] = [
       "alwaysStrict",
       "strictNullChecks",
       "strictBindCallApply",
+      "strictBuiltinIteratorReturn",
       "strictFunctionTypes",
       "strictPropertyInitialization",
       "noImplicitAny",
@@ -124,6 +125,7 @@ export const relatedTo: [AnOption, AnOption[]][] = [
   ["alwaysStrict", ["strict"]],
   ["strictNullChecks", ["strict"]],
   ["strictBindCallApply", ["strict"]],
+  ["strictBuiltinIteratorReturn", ["strict"]],
   ["strictFunctionTypes", ["strict"]],
   ["strictPropertyInitialization", ["strict"]],
   ["noImplicitAny", ["strict"]],
@@ -217,7 +219,7 @@ export const defaultsForOptions = {
   alwaysStrict: trueIf("strict"),
   declaration: trueIf("composite"),
   esModuleInterop: [
-    "`true` if [`module`](#module) is `node16` or `nodenext`;",
+    "`true` if [`module`](#module) is `node16`, `nodenext`, or `preserve`;",
     "`false` otherwise.",
   ],
   exclude: [
@@ -256,6 +258,7 @@ export const defaultsForOptions = {
   rootDir: "Computed from the list of input files.",
   rootDirs: "Computed from the list of input files.",
   strictBindCallApply: trueIf("strict"),
+  strictBuiltinIteratorReturn: trueIf("strict"),
   strictFunctionTypes: trueIf("strict"),
   useUnknownInCatchVariables: trueIf("strict"),
   strictPropertyInitialization: trueIf("strict"),

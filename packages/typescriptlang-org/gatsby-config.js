@@ -14,6 +14,8 @@ if (process.env.BOOTSTRAPPING) {
 
 require("./scripts/ensureDepsAreBuilt")
 
+const ts = require("typescript");
+
 // https://github.com/gatsbyjs/gatsby/issues/1457
 require("ts-node").register({ files: true })
 const { join } = require("path")
@@ -157,6 +159,10 @@ module.exports = {
               addTryButton: true,
               defaultOptions: {
                 noErrorValidation: true,
+              },
+              defaultCompilerOptions: {
+                types: [],
+                target: ts.ScriptTarget.ES2020,
               },
             },
           },

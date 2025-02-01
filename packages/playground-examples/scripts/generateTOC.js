@@ -26,7 +26,7 @@ const getFilePaths = folderPath => {
  * @property {string} title - name
  * @property {string} lang - the language for the example
  * @property {number} sortIndex - when listing the objects
- * @property {string} hash - the md5 of the content
+ * @property {string} hash - the sha512 of the content
  * @property {any} compilerSettings - name
  */
 
@@ -96,7 +96,7 @@ langs.forEach(lang => {
         .replace(/\+/g, "-"),
 
       sortIndex: index,
-      hash: crypto.createHash("md5").update(contents).digest("hex"),
+      hash: crypto.createHash("sha512").update(contents).digest("hex"),
 
       compilerSettings: compiler,
     };

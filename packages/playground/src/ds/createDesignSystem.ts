@@ -328,7 +328,12 @@ export const createDesignSystem = (sandbox: Sandbox) => {
         if (key === "kind") {
           suffix = ` (SyntaxKind.${info.name})`
         }
-        li.innerHTML = `${key}: <span class='${typeofSpan}'>${value}</span>${suffix}`
+        li.textContent = `${key}: `;
+        const span = document.createElement('span');
+        span.className = typeofSpan;
+        span.textContent = value;
+        li.appendChild(span);
+        li.appendChild(document.createTextNode(suffix));
         return li
       }
 

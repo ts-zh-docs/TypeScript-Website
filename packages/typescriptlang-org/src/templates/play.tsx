@@ -111,7 +111,30 @@ const Play: React.FC<Props> = (props) => {
           div.style.webkitAnimation = ""
         })
 
-        document.getElementById("loading-message")!.innerHTML = `This version of TypeScript <em>(${tsVersion?.replace(/</g, "-")})</em><br/>has not been prepared for the Playground<br/><br/>Try <a href='/play?ts=${latestRelease}${document.location.hash}'>${latestRelease}</a> or <a href="/play?ts=next${document.location.hash}">Nightly</a>`
+        const loadingMessage = document.getElementById("loading-message")!
+        loadingMessage.textContent = ""
+
+        const em = document.createElement("em")
+        em.textContent = `(${tsVersion})`
+
+        const latestReleaseLink = document.createElement('a');
+        latestReleaseLink.href = `/play?ts=${latestRelease}${document.location.hash}`;
+        latestReleaseLink.textContent = latestRelease;
+
+        const nightlyLink = document.createElement('a');
+        nightlyLink.href = `/play?ts=next${document.location.hash}`;
+        nightlyLink.textContent = 'Nightly';
+
+        loadingMessage.appendChild(document.createTextNode("This version of TypeScript "))
+        loadingMessage.appendChild(em)
+        loadingMessage.appendChild(document.createElement("br"))
+        loadingMessage.appendChild(document.createTextNode("has not been prepared for the Playground"))
+        loadingMessage.appendChild(document.createElement("br"))
+        loadingMessage.appendChild(document.createElement("br"))
+        loadingMessage.appendChild(document.createTextNode("Try "))
+        loadingMessage.appendChild(latestReleaseLink)
+        loadingMessage.appendChild(document.createTextNode(" or "))
+        loadingMessage.appendChild(nightlyLink)
         return
       }
 

@@ -62,15 +62,15 @@ export const createRootPagesLocalized = async (
     originalSitePath = originalSitePath.split("\\").join("/")
 
     langs.forEach(lang => {
-      if (!isMultiLingual && lang !== "en") return
+      if (!isMultiLingual && lang !== "zh") return
 
-      const prefix = lang === "en" ? "/" : `/${lang}/`
+      const prefix = lang === "zh" ? "/" : `/${lang}/`
       const sitePath = `${prefix}${originalSitePath}`
       const pageOpts = {
         path: sitePath,
         component: fullpath,
         context: {
-          lang: lang === "" ? "en" : lang,
+          lang: lang === "" ? "zh" : lang,
         },
       }
 

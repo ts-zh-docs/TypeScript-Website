@@ -13,7 +13,7 @@ type Props = SeoProps & {
 
 const getLocaleVersionOfPage = () => {
   // @ts-ignore 
-  const userLocale = navigator.language || navigator.userLanguage || "en-UK"
+  const userLocale = "zh"
   const userLang = userLocale.split("-")[0]
   const thisPaths = location.pathname.split("/")
 

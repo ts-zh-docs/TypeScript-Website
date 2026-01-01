@@ -55,6 +55,11 @@ jobs:
       - name: Install Vercel CLI
         run: npm install -g vercel@latest
 
+      - name: Configure Git for Vercel
+        run: |
+          git config --global user.email "awxiaoxian2020@163.com"
+          git config --global user.name "GitHub Actions"
+
       # Push 到 v2 分支时部署到生产环境
       - name: Deploy to Vercel (Production)
         if: github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'

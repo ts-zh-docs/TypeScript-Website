@@ -5,6 +5,7 @@ const { join } = require("path");
 const { format } = require("prettier");
 const { enRoot, getFilePaths } = require("./generateTypesForFilesInDocs");
 const { read: readMarkdownFile } = require("gray-matter");
+const { sidebarLocales } = require("./sidebarLocales");
 
 // This file is the definitive sidebar navigation source. It takes either:
 //
@@ -23,38 +24,9 @@ const { read: readMarkdownFile } = require("gray-matter");
 /* 
   Run this after any changes to propagate:
      pnpm run --filter=documentation create-handbook-nav
-*/
 
-// Localization mappings for sidebar display text (titles and summaries).
-// The `id` generation always uses the English title to keep anchors stable.
-/** @type {Record<string, Record<string, { title?: string, summary?: string }>>} */
-const sidebarI18n = {
-  zh: {
-    // Section titles and summaries
-    "Get Started": { title: "快速开始", summary: "根据你的背景或偏好快速入门。" },
-    "Handbook": { title: "手册", summary: "日常 TypeScript 工作的绝佳入门读物。" },
-    "Reference": { title: "参考", summary: "深入的参考资料。" },
-    "Modules Reference": { title: "模块参考", summary: "TypeScript 如何处理 JavaScript 模块。" },
-    "Tutorials": { title: "教程", summary: "在各种环境中使用 TypeScript。" },
-    "What's New": { title: "新增功能", summary: "了解 TypeScript 的发展历程和各版本的新增功能。" },
-    "Declaration Files": { title: "声明文件", summary: "学习如何编写声明文件来描述现有的 JavaScript。对 DefinitelyTyped 贡献很重要。" },
-    "JavaScript": { title: "JavaScript", summary: "如何使用 TypeScript 驱动的 JavaScript 工具。" },
-    "Project Configuration": { title: "项目配置", summary: "编译器配置参考。" },
-    // Sub-section titles (non-file items)
-    "Type Manipulation": { title: "类型操作" },
-    "Guides": { title: "指南" },
-    "Appendices": { title: "附录" },
-    ".d.ts Templates": { title: ".d.ts 模板" },
-    // Special link items
-    "Cheat Sheets": { title: "速查表", summary: "常见代码的语法概览" },
-    "TSConfig Reference": { title: "TSConfig 参考", summary: "涵盖所有 TSConfig 选项的页面" },
-    // Modules Reference sub-items with explicit titles
-    "Introduction": { title: "简介" },
-    "Theory": { title: "理论" },
-    // "Reference" is already defined above (used for both section and sub-item)
-    "Choosing Compiler Options": { title: "选择编译器选项" },
-  },
-};
+  Sidebar localization data is in: ./sidebarLocales.js
+*/
 
 /**
  * Get localized text for a given key, with fallback to original.
@@ -64,7 +36,7 @@ const sidebarI18n = {
  * @returns {string}
  */
 function getLocalizedText(lang, key, field) {
-  const langMap = sidebarI18n[lang];
+  const langMap = sidebarLocales[lang];
   if (langMap && langMap[key] && langMap[key][field]) {
     return langMap[key][field];
   }
@@ -293,7 +265,7 @@ for (const lang of langs) {
     // Section metadata (use localized title/summary for display, but keep id based on English title)
     const localizedTitle = getLocalizedText(lang, section.title, "title");
     // Look up summary using the section title as key (not the summary text itself)
-    const langMap = sidebarI18n[lang];
+    const langMap = sidebarLocales[lang];
     const localizedSummary = (langMap && langMap[section.title] && langMap[section.title].summary) 
       ? langMap[section.title].summary 
       : section.summary;
@@ -318,7 +290,7 @@ for (const lang of langs) {
           // Use localized title/oneliner for display, keep id based on English title
           const localizedLinkTitle = getLocalizedText(lang, subItem.title, "title");
           // Look up oneliner using the link title as key
-          const linkLangMap = sidebarI18n[lang];
+          const linkLangMap = sidebarLocales[lang];
           const localizedLinkOneliner = (linkLangMap && linkLangMap[subItem.title] && linkLangMap[subItem.title].summary)
             ? linkLangMap[subItem.title].summary
             : subItem.oneliner;

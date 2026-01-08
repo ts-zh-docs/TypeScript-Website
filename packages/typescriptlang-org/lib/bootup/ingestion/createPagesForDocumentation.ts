@@ -24,7 +24,7 @@ export const createDocumentationPages = async (
           sourceInstanceName: { eq: "documentation" }
           extension: { eq: "md" }
           relativeDirectory: { 
-          regex: "/^(?!en\\/modules-reference\\/diagrams|zh\\/modules-reference\\/diagrams).*$/"
+          regex: "/^(?!.*/modules-reference/diagrams)/"
           }
         }
       ) {

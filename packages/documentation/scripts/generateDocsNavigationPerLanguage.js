@@ -5,6 +5,7 @@ const { join } = require("path");
 const { format } = require("prettier");
 const { enRoot, getFilePaths } = require("./generateTypesForFilesInDocs");
 const { read: readMarkdownFile } = require("gray-matter");
+const { sidebarLocales } = require("./sidebarLocales");
 
 // This file is the definitive sidebar navigation source. It takes either:
 //
@@ -23,7 +24,24 @@ const { read: readMarkdownFile } = require("gray-matter");
 /* 
   Run this after any changes to propagate:
      pnpm run --filter=documentation create-handbook-nav
+
+  Sidebar localization data is in: ./sidebarLocales.js
 */
+
+/**
+ * Get localized text for a given key, with fallback to original.
+ * @param {string} lang
+ * @param {string} key - The English text to look up
+ * @param {"title" | "summary"} field
+ * @returns {string}
+ */
+function getLocalizedText(lang, key, field) {
+  const langMap = sidebarLocales[lang];
+  if (langMap && langMap[key] && langMap[key][field]) {
+    return langMap[key][field];
+  }
+  return field === "summary" ? key : key; // fallback to original
+}
 
 /** @type {HandbookNavItem[]} */
 // prettier-ignore
@@ -244,10 +262,16 @@ for (const lang of langs) {
   codeForTheHandbook.push(`navigations.${lang} = [`);
 
   handbookPages.forEach((section, sectionIndex) => {
-    // Section metadata:
+    // Section metadata (use localized title/summary for display, but keep id based on English title)
+    const localizedTitle = getLocalizedText(lang, section.title, "title");
+    // Look up summary using the section title as key (not the summary text itself)
+    const langMap = sidebarLocales[lang];
+    const localizedSummary = (langMap && langMap[section.title] && langMap[section.title].summary) 
+      ? langMap[section.title].summary 
+      : section.summary;
     codeForTheHandbook.push(`{ 
-      title: "${section.title}",
-      oneline: "${section.summary}",
+      title: "${localizedTitle}",
+      oneline: "${localizedSummary}",
       id: "${section.title.toLowerCase().replace(/\s/g, "-")}",
       chronological: ${section.chronological || false},
     `);
@@ -263,16 +287,25 @@ for (const lang of langs) {
 
         // Is it a special link?
         if ("href" in subItem) {
+          // Use localized title/oneliner for display, keep id based on English title
+          const localizedLinkTitle = getLocalizedText(lang, subItem.title, "title");
+          // Look up oneliner using the link title as key
+          const linkLangMap = sidebarLocales[lang];
+          const localizedLinkOneliner = (linkLangMap && linkLangMap[subItem.title] && linkLangMap[subItem.title].summary)
+            ? linkLangMap[subItem.title].summary
+            : subItem.oneliner;
           codeForTheHandbook.push(`
-        title: "${subItem.title}",
+        title: "${localizedLinkTitle}",
         id: "${toID(sectionIndex, subItem.title)}",
         permalink: "${subItem.href}",
-        oneline: "${subItem.oneliner}"
+        oneline: "${localizedLinkOneliner}"
       },`);
         } else if ("items" in subItem) {
           //Is is a sub-sub-section?
+          // Use localized title for display, keep id based on English title
+          const localizedSubTitle = getLocalizedText(lang, subItem.title, "title");
           codeForTheHandbook.push(`
-            title: "${subItem.title}",
+            title: "${localizedSubTitle}",
             id: "${toID(sectionIndex, subItem.title)}",
             oneline: "${subItem.oneliner}",
             chronological: ${subItem.chronological || false},
@@ -284,12 +317,16 @@ for (const lang of langs) {
           const subNavInfo =
             langInfo[lang].get(subItem.file) ||
             langInfo["en"].get(subItem.file);
+          // Get English info for stable id generation
+          const enNavInfo = langInfo["en"].get(subItem.file);
 
           if (!subNavInfo) throwForUnfoundFile(subItem, lang, langInfo["en"]);
 
+          // Use localized title from frontmatter, but keep id based on English title
+          const enTitle = enNavInfo ? enNavInfo.data.title : subNavInfo.data.title;
           codeForTheHandbook.push(`
             title: "${subNavInfo.data.short || subNavInfo.data.title}",
-            id: "${toID(sectionIndex, subNavInfo.data.title)}",
+            id: "${toID(sectionIndex, enTitle)}",
             permalink: "${subNavInfo.data.permalink}",
             oneline: "${subNavInfo.data.oneline}",
           `);

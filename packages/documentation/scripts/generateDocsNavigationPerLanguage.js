@@ -25,6 +25,52 @@ const { read: readMarkdownFile } = require("gray-matter");
      pnpm run --filter=documentation create-handbook-nav
 */
 
+// Localization mappings for sidebar display text (titles and summaries).
+// The `id` generation always uses the English title to keep anchors stable.
+/** @type {Record<string, Record<string, { title?: string, summary?: string }>>} */
+const sidebarI18n = {
+  zh: {
+    // Section titles and summaries
+    "Get Started": { title: "快速开始", summary: "根据你的背景或偏好快速入门。" },
+    "Handbook": { title: "手册", summary: "日常 TypeScript 工作的绝佳入门读物。" },
+    "Reference": { title: "参考", summary: "深入的参考资料。" },
+    "Modules Reference": { title: "模块参考", summary: "TypeScript 如何处理 JavaScript 模块。" },
+    "Tutorials": { title: "教程", summary: "在各种环境中使用 TypeScript。" },
+    "What's New": { title: "新增功能", summary: "了解 TypeScript 的发展历程和各版本的新增功能。" },
+    "Declaration Files": { title: "声明文件", summary: "学习如何编写声明文件来描述现有的 JavaScript。对 DefinitelyTyped 贡献很重要。" },
+    "JavaScript": { title: "JavaScript", summary: "如何使用 TypeScript 驱动的 JavaScript 工具。" },
+    "Project Configuration": { title: "项目配置", summary: "编译器配置参考。" },
+    // Sub-section titles (non-file items)
+    "Type Manipulation": { title: "类型操作" },
+    "Guides": { title: "指南" },
+    "Appendices": { title: "附录" },
+    ".d.ts Templates": { title: ".d.ts 模板" },
+    // Special link items
+    "Cheat Sheets": { title: "速查表", summary: "常见代码的语法概览" },
+    "TSConfig Reference": { title: "TSConfig 参考", summary: "涵盖所有 TSConfig 选项的页面" },
+    // Modules Reference sub-items with explicit titles
+    "Introduction": { title: "简介" },
+    "Theory": { title: "理论" },
+    // "Reference" is already defined above (used for both section and sub-item)
+    "Choosing Compiler Options": { title: "选择编译器选项" },
+  },
+};
+
+/**
+ * Get localized text for a given key, with fallback to original.
+ * @param {string} lang
+ * @param {string} key - The English text to look up
+ * @param {"title" | "summary"} field
+ * @returns {string}
+ */
+function getLocalizedText(lang, key, field) {
+  const langMap = sidebarI18n[lang];
+  if (langMap && langMap[key] && langMap[key][field]) {
+    return langMap[key][field];
+  }
+  return field === "summary" ? key : key; // fallback to original
+}
+
 /** @type {HandbookNavItem[]} */
 // prettier-ignore
 const handbookPages = [
@@ -244,10 +290,16 @@ for (const lang of langs) {
   codeForTheHandbook.push(`navigations.${lang} = [`);
 
   handbookPages.forEach((section, sectionIndex) => {
-    // Section metadata:
+    // Section metadata (use localized title/summary for display, but keep id based on English title)
+    const localizedTitle = getLocalizedText(lang, section.title, "title");
+    // Look up summary using the section title as key (not the summary text itself)
+    const langMap = sidebarI18n[lang];
+    const localizedSummary = (langMap && langMap[section.title] && langMap[section.title].summary) 
+      ? langMap[section.title].summary 
+      : section.summary;
     codeForTheHandbook.push(`{ 
-      title: "${section.title}",
-      oneline: "${section.summary}",
+      title: "${localizedTitle}",
+      oneline: "${localizedSummary}",
       id: "${section.title.toLowerCase().replace(/\s/g, "-")}",
       chronological: ${section.chronological || false},
     `);
@@ -263,16 +315,25 @@ for (const lang of langs) {
 
         // Is it a special link?
         if ("href" in subItem) {
+          // Use localized title/oneliner for display, keep id based on English title
+          const localizedLinkTitle = getLocalizedText(lang, subItem.title, "title");
+          // Look up oneliner using the link title as key
+          const linkLangMap = sidebarI18n[lang];
+          const localizedLinkOneliner = (linkLangMap && linkLangMap[subItem.title] && linkLangMap[subItem.title].summary)
+            ? linkLangMap[subItem.title].summary
+            : subItem.oneliner;
           codeForTheHandbook.push(`
-        title: "${subItem.title}",
+        title: "${localizedLinkTitle}",
         id: "${toID(sectionIndex, subItem.title)}",
         permalink: "${subItem.href}",
-        oneline: "${subItem.oneliner}"
+        oneline: "${localizedLinkOneliner}"
       },`);
         } else if ("items" in subItem) {
           //Is is a sub-sub-section?
+          // Use localized title for display, keep id based on English title
+          const localizedSubTitle = getLocalizedText(lang, subItem.title, "title");
           codeForTheHandbook.push(`
-            title: "${subItem.title}",
+            title: "${localizedSubTitle}",
             id: "${toID(sectionIndex, subItem.title)}",
             oneline: "${subItem.oneliner}",
             chronological: ${subItem.chronological || false},
@@ -284,12 +345,16 @@ for (const lang of langs) {
           const subNavInfo =
             langInfo[lang].get(subItem.file) ||
             langInfo["en"].get(subItem.file);
+          // Get English info for stable id generation
+          const enNavInfo = langInfo["en"].get(subItem.file);
 
           if (!subNavInfo) throwForUnfoundFile(subItem, lang, langInfo["en"]);
 
+          // Use localized title from frontmatter, but keep id based on English title
+          const enTitle = enNavInfo ? enNavInfo.data.title : subNavInfo.data.title;
           codeForTheHandbook.push(`
             title: "${subNavInfo.data.short || subNavInfo.data.title}",
-            id: "${toID(sectionIndex, subNavInfo.data.title)}",
+            id: "${toID(sectionIndex, enTitle)}",
             permalink: "${subNavInfo.data.permalink}",
             oneline: "${subNavInfo.data.oneline}",
           `);

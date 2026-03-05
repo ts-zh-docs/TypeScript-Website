@@ -4,7 +4,11 @@
 
 目前为了保持稳定，我们仍然采取原有的本地化方式进行构建，即在本仓库触发 Vercel 的构建。而在 [ts-zh-docs/TypeScript-zh-Website](https://github.com/ts-zh-docs/TypeScript-zh-Website) 进行更新。一切有关翻译的讨论都将移至那个仓库，本仓库只负责构建工作。**中文文档的线上地址请访问[这里](https://www.tslang.com.cn)**。
 
+<<<<<<< HEAD
 本地开发环境构建步骤：
+=======
+This repo uses pnpm workspaces with node 20+, and [watchman](https://facebook.github.io/watchman/docs/install.html). (Windows users can install [watchman via chocolatey](https://chocolatey.org/packages/watchman))
+>>>>>>> 3cff96e1db1c52baf2208d46c1a154861d279eb6
 
 1. 使用 Node 18.x 版本。
 2. 使用 `pnpm` 命令安装依赖。

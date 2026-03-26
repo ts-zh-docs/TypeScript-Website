@@ -44,11 +44,15 @@ const toggleNavigationSection: MouseEventHandler = (event) => {
 export const SidebarToggleButton = () => {
   const toggleClick = () => {
     const navSidebar = document.getElementById("sidebar")
+    const toggleButton = document.getElementById("small-device-button-sidebar")
     const isOpen = navSidebar?.classList.contains("show")
     if (isOpen) {
       navSidebar?.classList.remove("show")
+      navSidebar?.setAttribute("inert", "")
+      toggleButton?.focus()
     } else {
       navSidebar?.classList.add("show")
+      navSidebar?.removeAttribute("inert")
     }
   }
 
@@ -126,6 +130,23 @@ export const Sidebar = (props: Props) => {
       )
     }
   }
+
+  useEffect(() => {
+    const sidebar = document.getElementById("sidebar")
+    if (!sidebar) return
+
+    const mq = window.matchMedia("(max-width: 800px)")
+    const sync = () => {
+      if (mq.matches && !sidebar.classList.contains("show")) {
+        sidebar.setAttribute("inert", "")
+      } else {
+        sidebar.removeAttribute("inert")
+      }
+    }
+    sync()
+    mq.addEventListener("change", sync)
+    return () => mq.removeEventListener("change", sync)
+  }, [])
 
   return (
     <nav aria-label="sidebar" id="sidebar">

@@ -2,6 +2,7 @@
   "compilerOptions": {
     "resolveJsonModule": true,
     "allowJs": true,
-    "types": ["*"]
+    "noEmit": true,
+    "types": ["node"]
   }
 }

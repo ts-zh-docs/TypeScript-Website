@@ -106,7 +106,11 @@ export const createConfigDropdown = (sandbox: Sandbox, monaco: Monaco) => {
     .forEach(categoryID => {
       const categoryDiv = document.createElement("div")
       const header = document.createElement("h4")
+      const headerId = "category-header-" + categoryID
+      header.id = headerId
       const ol = document.createElement("ol")
+      ol.setAttribute("role", "group")
+      ol.setAttribute("aria-labelledby", headerId)
 
       Object.keys(categoryMap[categoryID]).forEach(optID => {
         const optSummary = categoryMap[categoryID][optID]

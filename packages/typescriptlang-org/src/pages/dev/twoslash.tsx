@@ -127,8 +127,6 @@ const Index: React.FC<Props> = props => {
 
                 document.getElementById("twoslash-failure")!.style.display =
                   "none"
-                document.getElementById("twoslash-results")!.innerHTML = html
-
                 // Remove all the kids
                 while (results.firstChild) {
                   results.removeChild(results.firstChild)
@@ -180,7 +178,7 @@ const Index: React.FC<Props> = props => {
             }
 
             const debouncedTwoslash = debounce(runTwoslash, 500)
-            sandbox.editor.onDidChangeModelContent(debouncedTwoslash)
+            sandbox.editor.onDidChangeModelContent(() => debouncedTwoslash())
             runTwoslash()
 
             setTimeout(() => {

@@ -34,6 +34,7 @@ import {
   watchOptionCompilerOptNames,
   rootOptNames,
   parseMarkdown,
+  parseMarkdownToPlainText,
 } from "../tsconfigRules.js";
 
 const options: CompilerOptionJSON[] = JSON.parse(readFileSync(join("data", "tsconfigOpts.json"), "utf8"));
@@ -67,12 +68,15 @@ assert.deepEqual(got, expected, `Expected to find everything in ${orderedCategor
 const notCompilerOptions = ["Project_Files_0", "Watch_Options_999"];
 const categoriesForCompilerOpts = orderedCategories.filter((c) => !notCompilerOptions.includes(c));
 
+const hiddenOptions = ["stableTypeOrdering"];
+
 const compilerOptions = options.filter(
   (o) =>
     !typeAcquisitionCompilerOptNames.includes(o.name) &&
     !watchOptionCompilerOptNames.includes(o.name) &&
     !buildOptionCompilerOptNames.includes(o.name) &&
-    !rootOptNames.includes(o.name)
+    !rootOptNames.includes(o.name) &&
+    !hiddenOptions.includes(o.name)
 );
 
 // The TSConfig Reference is a collection of sections which have options or
@@ -216,7 +220,7 @@ languages.forEach((lang) => {
         optionsSummary.push({
           id: optionName,
           display: optionFile.data.display,
-          oneliner: String(parseMarkdown(optionFile.data.oneline)),
+          oneliner: parseMarkdownToPlainText(String(optionFile.data.oneline)),
           categoryID: categoryID,
           categoryDisplay: categoryName,
         });
